@@ -8,3 +8,4 @@ bot:
   version_updates:
     random_fraction_to_keep: 0.10
   automerge: true
+conda_build_tool: rattler-build

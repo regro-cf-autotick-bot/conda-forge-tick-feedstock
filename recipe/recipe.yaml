@@ -1,31 +1,35 @@
-{% set python_min = "3.12" %}
-{% set name = "conda-forge-tick" %}
-{% set version = "2026.9.5" %}
+schema_version: 1
+
+context:
+  python_min: "3.12"
+  name: conda-forge-tick
+  version: "2026.9.32"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/regro/cf-scripts/archive/refs/tags/{{ version }}.tar.gz
-  sha256: aff58c3b8bae1946f9320b0c22e0e1bda4de16173b60e31e4b0e15c07da9ce03
+  url: https://github.com/conda-forge/conda-forge-bot/archive/refs/tags/${{ version }}.tar.gz
+  sha256: 8edd69c711bb072d5c6eb1c246896e402907282ff195457207f72001a4feebe0
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  entry_points:
-    - conda-forge-tick = conda_forge_tick.cli:main
-    - conda-forge-tick-container = conda_forge_tick.container_cli:cli
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - conda-forge-tick = conda_forge_tick.cli:main
+      - conda-forge-tick-container = conda_forge_tick.container_cli:cli
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - pip
     - setuptools
     - setuptools_scm >=8
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - attrs
     - backoff
     - bcrypt
@@ -82,21 +86,27 @@ requirements:
     - wurlitzer
     - yaml
 
-test:
-  requires:
-    - python {{ python_min }}
-  imports:
-    - conda_forge_tick
-  commands:
-    - python -c "import conda_forge_tick; assert conda_forge_tick.__version__ == '{{ version }}'"
-    - conda-forge-tick --help
-    - conda-forge-tick-container --help
+tests:
+  - python:
+      imports:
+        - conda_forge_tick
+      pip_check: false
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - python -c "import conda_forge_tick; assert conda_forge_tick.__version__ == '${{ version }}'"
+      - conda-forge-tick --help
+      - conda-forge-tick-container --help
 
 about:
-  home: https://github.com/regro/cf-scripts
-  summary: 'Flagship repo for cf-regro-autotick-bot'
+  summary: Flagship repo for conda-forge-bot
   license: BSD-3-Clause AND MIT
   license_file: License
+  homepage: https://github.com/conda-forge/conda-forge-bot
 
 extra:
   recipe-maintainers:
