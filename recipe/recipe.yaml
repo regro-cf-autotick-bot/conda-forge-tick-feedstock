@@ -30,40 +30,40 @@ requirements:
     - setuptools_scm >=8
   run:
     - python >=${{ python_min }}
-    - attrs
     - backoff
     - bcrypt
     - cachecontrol
     - cachetools
     - click
     - conda >=25
-    - conda-lock
+    - conda-build >=25
+    - conda-forge-feedstock-ops >=0.18.9
+    - conda-forge-metadata >=2026.9.5
     - conda-forge-pinning
     - conda-libmamba-solver
-    - conda-forge-metadata >=0.12.0
-    - conda-forge-feedstock-ops >=0.16.0
-    - conda-recipe-manager >=0.6.1
+    - conda-lock
     - conda-package-handling
-    - conda-smithy >=3.61.2
-    - conda-build >=25
+    - conda-recipe-manager >=0.10.6
+    - conda-smithy >=2026.5.29
     - curl
     - dateparser
-    - depfinder
     - distributed
+    - fastapi
     - feedparser
     - frozendict
-    - git
+    - git !=2.50
     - github3.py
-    - grayskull >=3.1.0
+    - grayskull >=3.1.1
     - jinja2
     - lockfile
     - mamba >=0.23
+    - mitmproxy
     - msgpack-python
     - networkx !=2.8.1
-    - numpy
     - orjson
     - packaging
     - psutil
+    - py-rattler>=0.22.0,<0.26.0a0
     - pydantic
     - pydantic-extra-types
     - pydantic-settings
@@ -72,19 +72,19 @@ requirements:
     - pynamodb
     - python-dateutil
     - python-graphviz
-    - rattler-build >=0.35.4
-    - rattler-build-conda-compat >=1.4.6,<2,!=1.4.7,!=1.4.8
+    - rattler-build >=0.74,<0.75.0a0
+    - rattler-build-conda-compat >=1.4.13,<2
     - requests
     - ruamel.yaml
     - ruamel.yaml.jinja2
     - scipy
+    - setuptools
     - stopit
     - streamz
     - tar
     - tqdm
     - wget
     - wurlitzer
-    - yaml
 
 tests:
   - python:
