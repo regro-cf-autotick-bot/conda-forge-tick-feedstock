@@ -63,7 +63,7 @@ requirements:
     - orjson
     - packaging
     - psutil
-    - py-rattler>=0.22.0,<0.26.0a0
+    - py-rattler >=0.22.0,<0.26.0a0
     - pydantic
     - pydantic-extra-types
     - pydantic-settings
