@@ -3,7 +3,7 @@ schema_version: 1
 context:
   python_min: "3.12"
   name: conda-forge-tick
-  version: "2026.9.42"
+  version: "2026.9.45"
 
 package:
   name: ${{ name|lower }}
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://github.com/conda-forge/conda-forge-bot/archive/refs/tags/${{ version }}.tar.gz
-  sha256: d195adfa0e7bc3219de164a1f8b78a4430526728f06f1ee072d95ef18bfba12d
+  sha256: 2d511f58ab0ca89acbb0ad6d2891432bfb3838b1d4af4222e69248e0be38ac47
 
 build:
   number: 0
